@@ -9,9 +9,9 @@ Both are important to us, but only declerative knowledge can be of any value.
 
 ### Numerical Example
 
-**Imperative knowledge** : square root of a number $x$ is $y$ such that $y*y = x$. This fact is useful for sure, but doesn't really help us find something.
+**Declarative knowledge** : square root of a number $x$ is $y$ such that $y*y = x$. This fact is useful for sure, but doesn't really help us find something.
 
-**Declerative knowledge** : a recipe to find the square root of a number $x$.
+**Imperative knowledge** : a recipe to find the square root of a number $x$.
 
 1. Start with a _guess_ $g$.
 2. If $g*g$ is _close enough_ to $x$, stop and say $g$ is the answer.
