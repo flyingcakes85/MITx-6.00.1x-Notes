@@ -6,7 +6,7 @@
 
 BUILD = build
 MAKEFILE = Makefile
-OUTPUT_FILENAME = book
+OUTPUT_FILENAME = MITx-6.00.1x-Notes
 METADATA = metadata.yml
 CHAPTERS = chapters/*.md
 TOC = --toc --toc-depth 2
