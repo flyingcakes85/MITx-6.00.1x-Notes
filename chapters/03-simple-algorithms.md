@@ -213,3 +213,60 @@ This runs in 14 guesses, compared to 30k from last section.
 - bisection search radically reduces computation time
 - should work on any function that varies monotonically
   - in above example, the function is `g**2`, which grows as `g` grows
+
+## Dealing with `float`
+
+- approximate real numbers
+- internally, computer represents numbers in binary, which may not be exact
+
+### Decimal to binary
+
+Keep dividing by 2, and noting down remainders.
+
+```py
+if num < 0:
+  isNeg = True
+  num = abs(num)
+else:
+  isNeg = False
+result = ‘‘
+if num == 0:
+  result = ‘0’
+while num > 0:
+  result = str(num%2) + result
+  num = num//2
+if isNeg:
+  result = ‘-’ + result
+```
+
+### Fractions and binary
+
+- if there is no integer `p` such that `x*(2**p)` is a whole number, then internal representation is always an approximation
+- test equality of `float`s by using `abs(x-y)<e` where `e` is a small number, rather than using `x==y`
+
+## Newton Raphson
+
+- general approximation algorithm to find roots of a polynomial in one variable
+
+  $p(x) = a_nx^n + a_{n-1}x^{n-1} + ... + a_1x + a_0$
+
+- we want to find $r$ such that $p(r) = 0$
+- for example, to find the square root of 24, find the root of $p(x) = x^2 - 24$
+- Newton showed that if $g$ is an approximation to the root, then
+
+  $g - p(g)/p\prime(g)$
+
+  is a better approximation; where $p\prime$ is derivative of $p$.
+
+```py
+epsilon = 0.01
+y = 24.0
+guess = y/2.0
+numGuesses = 0
+
+while abs(guess*guess - y) >= epsilon:
+  numGuesses += 1
+  guess = guess - (((guess**2) - y)/(2*guess))
+print(‘numGuesses = ‘ + str(numGuesses))
+print('Square root of ' + str(y) + ' is about ' + str(guess))
+```
